@@ -1,10 +1,22 @@
+package weatherman.chatbot;
+
+import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
+import spark.*;
+import weatherman.weather.Weather;
+
+import static spark.Spark.*;
+import static spark.route.HttpMethod.get;
+import static weatherman.chatbot.JSONUtil.json;
+import static weatherman.chatbot.JSONUtil.toJson;
+
 public class WebServer {
     public static void main(String[] args) {
         Spark.setPort(getHerokuAssignedPort());
         Spark.staticFileLocation("/public");
-        final Chatbot bot = new Chatbot();
-        get("/", (req, res) -> "Hello World! I am WeatherMan,
-                the weather bot!!");
+        Weather w = new Weather();
+        final Chatbot bot = new Chatbot(w);
+        get("/", (req, res) -> "Hello World! I am WeatherMan, the weather bot!!");
         //post handle for WeatherMan chatbot
         post("/bot", new Route() {
             public Object handle(Request request, Response response) {
@@ -33,7 +45,7 @@ public class WebServer {
                     JsonObject userInput = new JsonObject();
                     userInput.add("userUtterance", new
                             JsonPrimitive(userUtterance));
-                    String botResponse = bot.processFB(userInput);
+                    String botResponse = bot.process(userInput).toString();
                     System.out.println("Bot says:" + botResponse);
                     if (botResponse != null) {
                         return botResponse;
@@ -53,6 +65,7 @@ public class WebServer {
         });
     }
 
+
     static int getHerokuAssignedPort() {
         ProcessBuilder processBuilder = new ProcessBuilder();
         if (processBuilder.environment().get("PORT") != null) {
@@ -60,7 +73,5 @@ public class WebServer {
                     Integer.parseInt(processBuilder.environment().get("PORT"));
         }
         return 4567;
-//return default port if heroku-port isn't set (i.e. on
-//localhost)
     }
 }

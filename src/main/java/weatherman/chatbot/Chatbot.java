@@ -12,7 +12,7 @@ import weatherman.weather.Weather;
 public class Chatbot {
 	JsonObject context;
 	final Weather weather;
-	
+
 	public static void main(String[] args)
 	{
 		Weather w = new Weather();
@@ -69,7 +69,7 @@ public class Chatbot {
 			userUtterance = userInput.get("userUtterance").getAsString();
 			userUtterance = userUtterance.replaceAll("%2C", ",");
 		}
-		if (userUtterance.matches("(czesc|siemka|siema|witam|elo|Czesc|Siemka|Siema|Witam|Elo|czeœæ|siemka|siema|witam|elo|Czeœæ|Siemka|Siema|Witam|Elo)"))
+		if (userUtterance.matches("(czesc | siemka | siema | witam | elo | Czesc | Siemka | Siema | Witam | Elo | czeœæ | Czeœæ)"))
 		{
 			userAction.add("userIntent", new JsonPrimitive("greet"));
 		}

@@ -1,4 +1,5 @@
-package weatherman.web.utils;
+package weatherman.chatbot;
+
 import com.google.gson.Gson;
 import spark.ResponseTransformer;
 public class JSONUtil {
