@@ -1,4 +1,4 @@
-package weatherman.chatbot;
+package weatherman.web.utils;
 
 public class ResponseError {
     private String errorType;

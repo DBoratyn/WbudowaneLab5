@@ -1,14 +1,13 @@
-package weatherman.chatbot;
-
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 import spark.*;
+import weatherman.chatbot.Chatbot;
+import weatherman.web.utils.ResponseError;
 import weatherman.weather.Weather;
 
 import static spark.Spark.*;
-import static spark.route.HttpMethod.get;
-import static weatherman.chatbot.JSONUtil.json;
-import static weatherman.chatbot.JSONUtil.toJson;
+import static weatherman.web.utils.JSONUtil.json;
+import static weatherman.web.utils.JSONUtil.toJson;
 
 public class WebServer {
     public static void main(String[] args) {
