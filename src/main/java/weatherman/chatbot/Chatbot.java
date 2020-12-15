@@ -69,7 +69,7 @@ public class Chatbot {
 			userUtterance = userInput.get("userUtterance").getAsString();
 			userUtterance = userUtterance.replaceAll("%2C", ",");
 		}
-		if (userUtterance.matches("(czesc | siemka | siema | witam | elo | Czesc | Siemka | Siema | Witam | Elo | czeœæ | Czeœæ)"))
+		if (userUtterance.matches("(czesc|siemka|siema|witam|elo|Czesc|Siemka|Siema|Witam|Elo|czeœæ|Czeœæ)"))
 		{
 			userAction.add("userIntent", new JsonPrimitive("greet"));
 		}
