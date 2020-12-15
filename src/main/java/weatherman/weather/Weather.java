@@ -21,6 +21,7 @@ public class Weather {
 	
 	 //put your api key here 
 	 String apiKey = "4034a143181e4d9777c3072df1a7777f";
+	 HashMap<String,String> cityCodes;
 	 
      public static void main(String[] args) { 
     	  try { 
@@ -35,7 +36,7 @@ public class Weather {
               e.printStackTrace(); 
         } 
      }
-     
+
 public JsonObject getCityCode(String cityName)
 {     
 	JsonObject olkusz = new JsonObject();
@@ -43,13 +44,13 @@ public JsonObject getCityCode(String cityName)
 	olkusz.add("cityName", new JsonPrimitive("Olkusz"));
     JsonObject krakow = new JsonObject();
     krakow.add("cityCode", new JsonPrimitive("3094802"));
-    krakow.add("cityName", new JsonPrimitive("Kraków"));
+    krakow.add("cityName", new JsonPrimitive("Krakow"));
     JsonObject londyn = new JsonObject();
     londyn.add("cityCode", new JsonPrimitive("6058560"));
     londyn.add("cityName", new JsonPrimitive("Londyn"));
     HashMap<String, JsonObject> cities = new HashMap<>();
     cities.put("Olkusz", olkusz);
-    cities.put("Kraków", krakow);
+    cities.put("Krakow", krakow);
     cities.put("Londyn", londyn);
 
     return cities.get(cityName);
